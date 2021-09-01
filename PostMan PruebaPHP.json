@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "c6090557-6e13-4e0d-8d3c-a7d82e026673",
+		"name": "Prueba PHP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234aA!64",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_server}}/api/v1/auth/login",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Refresh",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url_server}}/api/v1/auth/refresh",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2Mjc4MzY3NTEsImV4cCI6MTYyNzg0MDM1MSwibmJmIjoxNjI3ODM2NzUxLCJqdGkiOiI4dGdVUXZab2FrTWpWRVhZIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Zj1SlI8i3vdgMtMJ6F6K8N9uBgQ9Z0YiHxm3wYpOQbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url_server}}/api/v1/auth/logout",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Oscar Galvez",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "oscargalvez199212@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Mecanica2021@@",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "Mecanica2021@@",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_server}}/api/v1/auth/register",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Modules",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "User Index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_bearer}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_server}}/api/v1/admin/user",
+									"host": [
+										"{{url_server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_bearer}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \r\n    \"name\" : \"Oscar Galvez Andrade\",\r\n    \"email\" : \"user1@user.com\",\r\n    \"password\" : \"Mecanica2021@@@\",\r\n    \"password_confirmation\" : \"Mecanica2021@@@\",\r\n    \"role\" : \"User\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_server}}/api/v1/admin/user",
+									"host": [
+										"{{url_server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_bearer}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\" : 1,\r\n    \"name\" : \"Oscar Galvez Andrade\",\r\n    \"email\" : \"admin@admin.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_server}}/api/v1/admin/user/update",
+									"host": [
+										"{{url_server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"user",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Update Password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_bearer}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\" : 3,\r\n    \"password\" : \"Mecanica2021@@@\",\r\n    \"password_confirmation\" : \"Mecanica2021@@@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_server}}/api/v1/admin/user/update/password",
+									"host": [
+										"{{url_server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"user",
+										"update",
+										"password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Update Rol",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_bearer}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\" : 3,\r\n    \"role\" : \"User\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_server}}/api/v1/admin/user/update/rol",
+									"host": [
+										"{{url_server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"user",
+										"update",
+										"rol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_bearer}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\" : 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_server}}/api/v1/admin/user/delete",
+									"host": [
+										"{{url_server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"user",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
